@@ -7,6 +7,7 @@ namespace InternshipApplication.Models.Domain
 {
     public interface IUserRepository
     {
+        //lijn
         IQueryable<User> GetAllUsers();
         User FindUser(String email);
     }
