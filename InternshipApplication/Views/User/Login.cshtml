@@ -1,0 +1,23 @@
+﻿@model InternshipApplication.ViewModels.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+    ViewBag.Active = "Log in";
+}
+
+    @using (Html.BeginForm("Login", "User", FormMethod.Post,
+        new {@class = "form-signin", role = "form",style="width: 25%; margin-left:auto;margin-right: auto;"}))
+    {
+      @Html.AntiForgeryToken()
+     <h2 class="form-signin-heading">Log in</h2>
+    <p> @Html.ValidationSummary()</p>
+    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", type = "email", placeholder = "Email", required = true, autofocus = true })
+    @Html.TextBoxFor(model => model.Passwd, new { @class = "form-control", placeholder = "Paswoord", type = "password" })
+    <label class="checkbox">
+        <input type="checkbox" value="remember-me">
+        Onthoudt me (werkt nog niet)
+    </label>
+    <input type="submit" value="Log in" class="btn btn-lg btn-primary btn-block" />
+    }
+
+
