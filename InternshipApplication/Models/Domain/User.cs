@@ -26,7 +26,7 @@ namespace InternshipApplication.Models.Domain
             get { return this.password; }
             set { this.password = sha256_hash(value); }
         }
-
+       
         public String sha256_hash(String value)
         {
             StringBuilder Sb = new StringBuilder();
