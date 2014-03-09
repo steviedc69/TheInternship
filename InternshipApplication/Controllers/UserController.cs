@@ -81,7 +81,7 @@ namespace InternshipApplication.Controllers
                 if (user != null)
                 {
                     //hier geraakt hij niet door
-                    if (user.Password.Equals(user.sha256_hash(model.Passwd)))
+                    if (Bewerkingen.ComparePasswd(user.Password,model.Passwd))
                     {
                         if (user.GetType() == typeof (Bedrijf))
                         {

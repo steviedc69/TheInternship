@@ -30,6 +30,7 @@ namespace InternshipApplication.Models.DAL
             modelBuilder.Configurations.Add(new UserMapper());
             modelBuilder.Configurations.Add(new BedrijfMapper());
             modelBuilder.Configurations.Add(new StudentMapper());
+            modelBuilder.Configurations.Add(new ContactPersoonMapper());
             modelBuilder.Configurations.Add(new StageBegeleiderMapper());
         }
     }

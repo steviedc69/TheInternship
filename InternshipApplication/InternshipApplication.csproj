@@ -212,6 +212,7 @@
     <Compile Include="Models\DAL\InternshipContext.cs" />
     <Compile Include="Models\DAL\InternshipInitializer.cs" />
     <Compile Include="Models\DAL\Mapper\BedrijfMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\ContactPersoonMapper.cs" />
     <Compile Include="Models\DAL\Mapper\StageBegeleiderMapper.cs" />
     <Compile Include="Models\DAL\Mapper\StudentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\UserMapper.cs" />
@@ -226,6 +227,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Domain\Bewerkingen.cs" />
+    <Compile Include="Models\Domain\ContactPersoon.cs" />
     <Compile Include="Models\Domain\IBedrijfRepository.cs" />
     <Compile Include="Models\Domain\IStagebegeleiderRepository.cs" />
     <Compile Include="Models\Domain\IStudentRepository.cs" />

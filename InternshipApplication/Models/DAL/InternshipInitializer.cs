@@ -50,6 +50,24 @@ namespace InternshipApplication.Models.DAL
                     Woonplaats = "Aalst"
 
                 };
+                ContactPersoon c1 = new ContactPersoon()
+                {
+                    Naam = "Doe",
+                    Voornaam = "John",
+                    ContactEmail = "John.Doe@bedrijf.be",
+                    ContactTelNr = "000/000000",
+                    Functie = "Senior Java Developper"
+                };
+                b1.AddContactPersoon(c1);
+                ContactPersoon c2 = new ContactPersoon()
+                {
+                    Naam = "Doe",
+                    Voornaam = "John",
+                    ContactEmail = "John.Doe@bedrijf.be",
+                    ContactTelNr = "000/000000",
+                    Functie = "Senior Java Developper"
+                };
+                b1.AddContactPersoon(c2);
                 context.Bedrijven.Add(b1);
 
                 Bedrijf b2 = new Bedrijf()

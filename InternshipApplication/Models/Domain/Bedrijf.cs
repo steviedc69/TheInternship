@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Policy;
 using Microsoft.SqlServer.Server;
 
@@ -29,14 +30,15 @@ namespace InternshipApplication.Models.Domain
         public String Activiteit { get; set; }
        // public String EmailAdres { get; set; }
        // public String Paswoord { get; set; }
+        public IList<ContactPersoon>ContactPersonen { get; private set; } 
 
         public Bedrijf()
         {
-                        
+           ContactPersonen = new List<ContactPersoon>();             
         }
 
         public Bedrijf(String emailadres, String password, String bedrijfsnaam, String url, String straat, int straatnummer, String woonplaats, String telefoon, 
-            String bereikbaarheid, String activiteit)
+            String bereikbaarheid, String activiteit,IList<ContactPersoon>cPersonen )
         {
             this.Emailadres = emailadres;
             this.Password = password;
@@ -47,7 +49,19 @@ namespace InternshipApplication.Models.Domain
             this.Telefoon = telefoon;
             this.Bereikbaarheid = bereikbaarheid;
             this.Activiteit = activiteit;
+            ContactPersonen = cPersonen;
         }
+
+        public void AddContactPersoon(ContactPersoon persoon)
+        {
+            this.ContactPersonen.Add(persoon);
+        }
+
+        public void RemoveContactPersoon(ContactPersoon persoon)
+        {
+            this.ContactPersonen.Remove(persoon);
+        }
+
 
     }
 }
