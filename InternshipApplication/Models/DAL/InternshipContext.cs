@@ -23,7 +23,9 @@ namespace InternshipApplication.Models.DAL
         public DbSet<Bedrijf> Bedrijven { get; set; }
         public DbSet<Student> Studenten { get; set; }
         public DbSet<Stagebegeleider> Stagebegeleiders { get; set; }
-        public DbSet<UserProfile> UserProfiles { get; set; }
+        //public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Opdracht>Opdrachten { get; set; } 
+        public DbSet<Specialisatie> Specialisaties { get; set; }
         
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -34,6 +36,8 @@ namespace InternshipApplication.Models.DAL
             modelBuilder.Configurations.Add(new StudentMapper());
             modelBuilder.Configurations.Add(new ContactPersoonMapper());
             modelBuilder.Configurations.Add(new StageBegeleiderMapper());
+            modelBuilder.Configurations.Add(new OpdrachtMapper());
+            modelBuilder.Configurations.Add(new SpecialisatieMapper());
         }
     }
 }

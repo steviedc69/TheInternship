@@ -61,6 +61,8 @@ namespace InternshipApplication.App_Start
             kernel.Bind<IStagebegeleiderRepository>().To<StagebegeleiderRepository>().InRequestScope();
             kernel.Bind<IBedrijfRepository>().To<BedrijfRepository>().InRequestScope();
             kernel.Bind<InternshipContext>().ToSelf().InRequestScope();
+            kernel.Bind<ISpecialisatieRepository>().To<SpecialisatieRepository>();
+            kernel.Bind<IOpdrachtRepository>().To<OpdrachtenRepository>();
         }        
     }
 }

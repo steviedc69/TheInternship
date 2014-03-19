@@ -213,9 +213,13 @@
     <Compile Include="Models\DAL\InternshipInitializer.cs" />
     <Compile Include="Models\DAL\Mapper\BedrijfMapper.cs" />
     <Compile Include="Models\DAL\Mapper\ContactPersoonMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\OpdrachtMapper.cs" />
+    <Compile Include="Models\DAL\Mapper\SpecialisatieMapper.cs" />
     <Compile Include="Models\DAL\Mapper\StageBegeleiderMapper.cs" />
     <Compile Include="Models\DAL\Mapper\StudentMapper.cs" />
     <Compile Include="Models\DAL\Mapper\UserMapper.cs" />
+    <Compile Include="Models\DAL\OpdrachtenRepository.cs" />
+    <Compile Include="Models\DAL\SpecialisatieRepository.cs" />
     <Compile Include="Models\DAL\UserRepository.cs" />
     <Compile Include="Models\DAL\StagebegeleiderRepository.cs" />
     <Compile Include="Models\DAL\StudentRepository.cs" />
@@ -228,9 +232,13 @@
     <Compile Include="Models\Domain\Bewerkingen.cs" />
     <Compile Include="Models\Domain\ContactPersoon.cs" />
     <Compile Include="Models\Domain\IBedrijfRepository.cs" />
+    <Compile Include="Models\Domain\IOpdrachtRepository.cs" />
+    <Compile Include="Models\Domain\ISpecialisatieRepository.cs" />
     <Compile Include="Models\Domain\IStagebegeleiderRepository.cs" />
     <Compile Include="Models\Domain\IStudentRepository.cs" />
     <Compile Include="Models\Domain\IUserRepository.cs" />
+    <Compile Include="Models\Domain\Opdracht.cs" />
+    <Compile Include="Models\Domain\Specialisatie.cs" />
     <Compile Include="Models\Domain\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Domain\User.cs" />

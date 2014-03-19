@@ -18,11 +18,14 @@ namespace InternshipApplication.Models.Domain
         public String Bereikbaarheid { get; set; }
         public String Activiteit { get; set; }
 
+
         public IList<ContactPersoon>ContactPersonen { get; private set; } 
+        public IList<Opdracht>Opdrachten { get; private set; } 
 
         public Bedrijf()
         {
-           ContactPersonen = new List<ContactPersoon>();             
+           ContactPersonen = new List<ContactPersoon>(); 
+           Opdrachten = new List<Opdracht>(); 
         }
 
         public Bedrijf(String emailadres, String bedrijfsnaam, String url, String straat, int straatnummer, String woonplaats, String telefoon, 
@@ -50,6 +53,15 @@ namespace InternshipApplication.Models.Domain
             this.ContactPersonen.Remove(persoon);
         }
 
+        public void AddOpdracht(Opdracht opdracht)
+        {
+            this.Opdrachten.Add(opdracht);
+        }
+
+        public void removeOpdracht(Opdracht opdracht)
+        {
+            this.Opdrachten.Remove(opdracht);
+        }
 
     }
 }

@@ -19,9 +19,26 @@ namespace InternshipApplication.Models.DAL
         private Student s1;
         protected override void Seed(InternshipContext context)
         {
-            
+
             try
             {
+                /*programmeren, webontwikkeling, mainframe, e-business, mobile, systeembeheer.
+                 */
+
+                
+                Specialisatie sp1 = new Specialisatie() {Title = "Programmeren"};
+                Specialisatie sp2 = new Specialisatie() { Title = "Webontwikkeling" };
+                Specialisatie sp3 = new Specialisatie() { Title = "Mainframe" };
+                Specialisatie sp4 = new Specialisatie() { Title = "e-business" };
+                Specialisatie sp5 = new Specialisatie() { Title = "Mobile" };
+                Specialisatie sp6 = new Specialisatie() { Title = "Systeembeheer" };
+                Specialisatie sp7 = new Specialisatie() { Title = "Andere" };
+                var specialisaties = new List<Specialisatie>()
+                {
+                    sp1,sp2,sp3,sp4,sp5,sp6,sp7
+                };
+                specialisaties.ForEach(c=>context.Specialisaties.Add(c));
+
                 s1 = new Student()
                 {
                     Naam = "TestStudent",
@@ -69,6 +86,16 @@ namespace InternshipApplication.Models.DAL
                     Functie = "Senior Java Developper"
                 };
                 b1.AddContactPersoon(c2);
+                Opdracht o1 = new Opdracht()
+                {
+                    Title = "Voorstel1",
+                    Specialisatie = sp1,
+                    isSemester1 = true,
+                    isSemester2 = false,
+                    Omschrijving = "Het eerste voorstel van dit bedrijf, programmeren van een back-end java applicatie"
+
+                };
+                b1.AddOpdracht(o1);
                 context.Bedrijven.Add(b1);
 
                 Bedrijf b2 = new Bedrijf()

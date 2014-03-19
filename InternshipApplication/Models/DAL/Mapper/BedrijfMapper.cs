@@ -16,7 +16,7 @@ namespace InternshipApplication.Models.DAL.Mapper
             Property(b => b.Telefoon).IsRequired();
             //mappen van de contactpersonen, contactpersoon is verplicht deel van een bedrijf dus heeft een bedrijfsId
             HasMany(b=>b.ContactPersonen).WithRequired().Map(m=>m.MapKey("BedrijfId")).WillCascadeOnDelete(true);
-
+            HasMany(b=>b.Opdrachten).WithRequired().Map(m=>m.MapKey("BedrijfId")).WillCascadeOnDelete(true);
             ToTable("Bedrijf");
         }
 
