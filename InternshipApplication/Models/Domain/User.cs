@@ -9,7 +9,7 @@ namespace InternshipApplication.Models.Domain
     public abstract class User
     {
 
-        private String passwd;
+
         public User()
         {
             
@@ -17,12 +17,9 @@ namespace InternshipApplication.Models.Domain
 
         public String Emailadres{ get; set; }
         public int Id { get; set; }
-        public String Password
-        {
-            get { return this.passwd; }
-            set { this.passwd = Bewerkingen.GetEncryptedPasswd(value); }
+  
         }
        
 
     }
-}
+

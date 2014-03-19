@@ -18,11 +18,11 @@ namespace InternshipApplication.Models.Domain
             
         }
 
-        public Stagebegeleider(String emailadres, String password, String naam, String voornaam, String gsmnummer,
+        public Stagebegeleider(String emailadres,  String naam, String voornaam, String gsmnummer,
             String gebdatum)
         {
             this.Emailadres = emailadres;
-            this.Password = password;
+
             this.Naam = naam;
             this.Voornaam = voornaam;
             this.Gsmnummer = gsmnummer;

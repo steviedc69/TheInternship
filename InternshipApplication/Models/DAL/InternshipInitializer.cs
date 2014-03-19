@@ -7,24 +7,26 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Web;
+using System.Web.Security;
 using InternshipApplication.Models.Domain;
+using MySql.Data.MySqlClient;
+using WebMatrix.WebData;
 
 namespace InternshipApplication.Models.DAL
 {
     public class InternshipInitializer : DropCreateDatabaseAlways<InternshipContext>
     {
-
+        private Student s1;
         protected override void Seed(InternshipContext context)
         {
             
             try
             {
-                Student s1 = new Student()
+                s1 = new Student()
                 {
                     Naam = "TestStudent",
                     Voornaam = "jantje",
                     Emailadres = "testStudent@hogent.be",
-                    Password = "paswoord123",
                     Straat = "studentstraat",
                     Straatnummer = 34,
                     Gebdatum = "30-12-1999",
@@ -40,7 +42,6 @@ namespace InternshipApplication.Models.DAL
                     Bedrijfsnaam = "TestBedrijf1",
                     Activiteit = "testing",
                     Bereikbaarheid = "nee",
-                    Password = "paswoord123",
                     Straat = "bedrijfstraat",
                     Straatnummer = 23,
                     //clientside validation op het telefoonnummer!! 
@@ -76,7 +77,7 @@ namespace InternshipApplication.Models.DAL
                     Bedrijfsnaam = "TestBedrijf2",
                     Activiteit = "testing",
                     Bereikbaarheid = "nee",
-                    Password = "paswoord123",
+
                     Straat = "bedrijfstraat",
                     Straatnummer = 24,
                     //clientside validation op het telefoonnummer!! 
@@ -86,10 +87,11 @@ namespace InternshipApplication.Models.DAL
                     Woonplaats = "Aalst"
 
                 };
-                context.Bedrijven.Add(b2);
 
-          
+                context.Bedrijven.Add(b2);
                 context.SaveChanges();
+                //SeedMembership();
+                
             }
             catch (DbEntityValidationException e)
             {
@@ -107,7 +109,20 @@ namespace InternshipApplication.Models.DAL
                 throw new Exception(s);
             }
         }
+        private void SeedMembership()
+        {
+            WebSecurity.InitializeDatabaseConnection("internshipdb", "User", "Id", "emailadres",
+                autoCreateTables: true);
+            //var roles = (MysqlrSimpleRoleProvider)Roles.Provider;
+            var membership = (SimpleMembershipProvider)Membership.Provider;
 
+            //roles.CreateRole("admin");
+            //roles.CreateRole("customer");
+            
+                membership.CreateAccount(s1.Emailadres,"password123");
+                //roles.AddUsersToRoles(new string[] { "student" + i }, new string[] { "customer" });
+         
+        }
    
 }
 

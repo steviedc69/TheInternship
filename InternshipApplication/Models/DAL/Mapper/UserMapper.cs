@@ -13,7 +13,6 @@ namespace InternshipApplication.Models.DAL.Mapper
         {
             HasKey(u => u.Id);
             Property(u => u.Emailadres).IsRequired();
-            Property(u => u.Password).IsRequired();
             ToTable("User");
         }
         

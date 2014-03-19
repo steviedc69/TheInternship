@@ -23,6 +23,8 @@ namespace InternshipApplication.Models.DAL
         public DbSet<Bedrijf> Bedrijven { get; set; }
         public DbSet<Student> Studenten { get; set; }
         public DbSet<Stagebegeleider> Stagebegeleiders { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -59,9 +59,10 @@ namespace InternshipApplication.Controllers
                 b.Url = model.Url;
                 b.Woonplaats = model.Woonplaats;
                 b.Emailadres = model.Email;
-                b.Password = model.Password;
                 bedrijfRepository.Add(b);
                 bedrijfRepository.SaveChanges();
+                WebSecurity.CreateAccount(b.Emailadres, model.Password);
+
                 return RedirectToAction("Index", "Home",b);
             }
             return View();
@@ -73,46 +74,23 @@ namespace InternshipApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            
-            if (ModelState.IsValid)
-            {
-                //is misschien wat ingewikkeld, ma zal voorlopig werken
+         
+           
                 User user = userRepository.FindUser(model.Email);
-                if (user != null)
+                if (ModelState.IsValid && WebSecurity.Login(model.Email, model.Passwd, persistCookie: model.RememberMe))
                 {
-                    //hier geraakt hij niet door
-                    if (Bewerkingen.ComparePasswd(user.Password,model.Passwd))
-                    {
-                        if (user.GetType() == typeof (Bedrijf))
-                        {
-                            Bedrijf b = bedrijfRepository.FindById(user.Id);
-                            return RedirectToAction("Index", "Home", b);
-                        }
-                        if (user.GetType() == typeof (Stagebegeleider))
-                        {
-                            Stagebegeleider s = stagebegeleiderRepository.FindById(user.Id);
-                            return RedirectToAction("Index", "Home", s);
-                        }
-                        if (user.GetType() == typeof (Student))
-                        {
-                            Student s = studentRepository.FindById(user.Id);
-                            return RedirectToAction("Index", "Home", s);
-                        }
+                
+                }
 
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "E-mail en gebruikersnaam komen niet overeen, of registreer u gratis");
-                    return View(model);
-                }
+            // If we got this far, something failed, redisplay form
+            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return View(model);
+
 
             }
-                
-            ModelState.AddModelError("","Velden zijn niet correct");
-            return View(model);
+
    
         }
 
     }
-}
+

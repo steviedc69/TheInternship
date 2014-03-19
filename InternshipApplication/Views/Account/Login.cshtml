@@ -1,4 +1,4 @@
-﻿@model InternshipApplication.Models.LoginModel
+﻿@model InternshipApplication.ViewModels.LoginModel
 
 @{
     ViewBag.Title = "Log in";
@@ -18,14 +18,14 @@
         <legend>Log in Form</legend>
         <ol>
             <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+                @Html.ValidationMessageFor(m => m.Email)
             </li>
             <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
+                @Html.LabelFor(m => m.Passwd)
+                @Html.PasswordFor(m => m.Passwd)
+                @Html.ValidationMessageFor(m => m.Passwd)
             </li>
             <li>
                 @Html.CheckBoxFor(m => m.RememberMe)

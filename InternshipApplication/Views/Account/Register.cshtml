@@ -1,35 +1,92 @@
-﻿@model InternshipApplication.Models.RegisterModel
+﻿@model InternshipApplication.ViewModels.RegistratieModel
+
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registreer";
+    ViewBag.Active = "Registreer";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Register", "User", FormMethod.Post,
+    new {@class = "form-horizontal", role = "form"}))
+{
     @Html.AntiForgeryToken()
+    <h4>Registreer</h4>
+    <hr />
     @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bedrijfsnaam, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Bedrijfsnaam, new {@class = "form-control", style = "width: 50%" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Url, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Url, new {@class = "form-control", style = "width: 50%" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Straat, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Straat, new {@class = "form-control", style = "width: 50%" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Straatnummer, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Straatnummer, new {@class = "form-control", style = "width: 50%" })
+        </div>
+    </div>
 
-    <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
-    </fieldset>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Woonplaats, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Woonplaats, new {@class = "form-control", style = "width: 50%" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Telefoon, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Telefoon, new {@class = "form-control", style = "width: 50%" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bereikbaarheid, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Bereikbaarheid, new {@class = "form-control", style = "width: 50%" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Activiteit, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Activiteit, new {@class = "form-control", style = "width: 50%" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new {@class = "form-control", style = "width: 50%" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new {@class = "form-control", type = "password", style = "width: 50%" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPaswoord, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPaswoord, new {@class = "form-control", type = "password", style = "width: 50%" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Registreer" style="width: 50%" />
+        </div>
+    </div>
 }
 
 @section Scripts {
