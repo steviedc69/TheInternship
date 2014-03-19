@@ -31,6 +31,7 @@
                     <li class="@(ViewBag.Active == "Home" ? "active" : "")">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="@(ViewBag.Active == "Over" ? "active" : "")">@Html.ActionLink("Over", "About", "Home")</li>
                     <li class="@(ViewBag.Active == "Contact" ? "active" : "")">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="@(ViewBag.Active == "User" ? "active" : "")">@Html.ActionLink("Bedrijf", "UserIndex", "User")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

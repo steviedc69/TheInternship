@@ -19,8 +19,8 @@ namespace InternshipApplication.Models.Domain
         public String Activiteit { get; set; }
 
 
-        public IList<ContactPersoon>ContactPersonen { get; private set; } 
-        public IList<Opdracht>Opdrachten { get; private set; } 
+        public virtual ICollection<ContactPersoon>ContactPersonen { get; private set; } 
+        public virtual ICollection<Opdracht>Opdrachten { get; private set; } 
 
         public Bedrijf()
         {

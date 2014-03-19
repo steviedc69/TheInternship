@@ -1,0 +1,19 @@
+﻿
+@model InternshipApplication.Models.Domain.Bedrijf
+@{
+    ViewBag.Title = "UserIndex";
+}
+@{ Html.RenderAction("UserToolbar",new{id=Model.Id});}
+<h2>Welkom @Model.Bedrijfsnaam</h2>
+<h3>Gegevens : </h3>
+<dl class="list-group">
+    <dt>E-mail: </dt><dd>@Model.Emailadres</dd>
+    <dt>Url: </dt><dd><a href="http://@Model.Url">@Model.Url</a></dd>
+    <dt>Adres: </dt><dd><p>@Model.Straat  @Model.Straatnummer<br/>
+                            @Model.Woonplaats
+                        </p></dd> 
+    <dt>Tel: </dt><dd>@Model.Telefoon</dd>
+</dl>
+
+<button class="btn btn-lg btn-primary btn-block">Wijzig gegevens</button>
+

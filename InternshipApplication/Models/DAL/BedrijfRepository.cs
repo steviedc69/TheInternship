@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using InternshipApplication.Models.Domain;
+using WebGrease.Css.Extensions;
 
 namespace InternshipApplication.Models.DAL
 {
@@ -12,12 +13,16 @@ namespace InternshipApplication.Models.DAL
         // Context en DbSet
         private InternshipContext context;
         private DbSet<Bedrijf> bedrijven;
+        private DbSet<Opdracht> opdrachten;
+        private DbSet<ContactPersoon> contactpersonen;
 
         // Constructor
         public BedrijfRepository(InternshipContext context)
         {
             this.context = context;
             bedrijven = context.Bedrijven;
+            opdrachten = context.Opdrachten;
+            contactpersonen = context.ContactPersonen;
         }
 
         public IQueryable<Bedrijf> FindAll()
@@ -55,5 +60,6 @@ namespace InternshipApplication.Models.DAL
         {
             context.SaveChanges();
         }
+
     }
 }

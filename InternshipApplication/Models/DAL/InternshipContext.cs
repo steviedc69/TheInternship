@@ -26,6 +26,7 @@ namespace InternshipApplication.Models.DAL
         //public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Opdracht>Opdrachten { get; set; } 
         public DbSet<Specialisatie> Specialisaties { get; set; }
+        public DbSet<ContactPersoon> ContactPersonen { get; set; }
         
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -28,5 +28,10 @@ namespace InternshipApplication.Models.DAL
         {
             return specialisaties.Find(id);
         }
+
+        public void SaveChanges()
+        {
+            context.SaveChanges();
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace InternshipApplication.Models.Domain
     {
         IQueryable<Specialisatie> FindAllSpecialisaties();
         Specialisatie FindSpecialisatie(int id);
+        void SaveChanges();
     }
 }

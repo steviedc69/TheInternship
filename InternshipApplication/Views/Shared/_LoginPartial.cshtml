@@ -16,6 +16,6 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li class="@(ViewBag.Active == "Registreer" ? "active" : "")">@Html.ActionLink("Registreer", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li class="@(ViewBag.Active == "Log in" ? "active" : "")">@Html.ActionLink("Log in", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li class="@(ViewBag.Active == "Log in" ? "active" : "")">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

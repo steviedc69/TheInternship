@@ -17,78 +17,53 @@ namespace InternshipApplication.Controllers
         private IStudentRepository studentRepository;
         private IStagebegeleiderRepository stagebegeleiderRepository;
         private IUserRepository userRepository;
+        private ISpecialisatieRepository specialisatieRepository;
+
        
         //public UserController(){}
 
-        public UserController(IBedrijfRepository bedrijfR, IStudentRepository studentR , IStagebegeleiderRepository stagebegeleiderR,IUserRepository usersRepository)
+        public UserController(IBedrijfRepository bedrijfR, IStudentRepository studentR , 
+            IStagebegeleiderRepository stagebegeleiderR,IUserRepository usersRepository,ISpecialisatieRepository specialisatie)
         {
             this.bedrijfRepository = bedrijfR;
             this.stagebegeleiderRepository = stagebegeleiderR;
             this.studentRepository = studentR;
             this.userRepository = usersRepository;
-        }
-        //
-        // GET: /User/
-        [AllowAnonymous]
-        public ActionResult Login()
-        {
-            //login pagina moet nog worden aangemaakt
-            return View();
+            this.specialisatieRepository = specialisatie;
         }
 
-        [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult UserIndex()
         {
-            return View();
+            Bedrijf b = bedrijfRepository.FindById(1);
+            return View(b);
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(RegistratieModel model)
+        public ActionResult ContactPersonen(int id)
         {
-            if (ModelState.IsValid)
+            Bedrijf bedrijf = bedrijfRepository.FindById(id);
+            if (bedrijf.ContactPersonen == null)
             {
-                Bedrijf b = new Bedrijf();
-                b.Activiteit = model.Activiteit;
-                b.Bedrijfsnaam = model.Bedrijfsnaam;
-                b.Bereikbaarheid = model.Bereikbaarheid;
-                b.Straat = model.Straat;
-                b.Straatnummer = model.Straatnummer;
-                b.Telefoon = model.Telefoon;
-                b.Url = model.Url;
-                b.Woonplaats = model.Woonplaats;
-                b.Emailadres = model.Email;
-                bedrijfRepository.Add(b);
-                bedrijfRepository.SaveChanges();
-                WebSecurity.CreateAccount(b.Emailadres, model.Password);
-
-                return RedirectToAction("Index", "Home",b);
+                //voorlopig
+                return RedirectToAction("UserIndex");
             }
-            return View();
+            return View(bedrijf.ContactPersonen);
         }
 
-
-        [HttpPost]
-        //[AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public ActionResult OpdrachtenView(int id)
         {
-         
-           
-                User user = userRepository.FindUser(model.Email);
-                if (ModelState.IsValid && WebSecurity.Login(model.Email, model.Passwd, persistCookie: model.RememberMe))
-                {
-                
-                }
-
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View(model);
-
-
+            Bedrijf bedrijf = bedrijfRepository.FindById(id);
+            if (bedrijf.Opdrachten == null)
+            {
+                return RedirectToAction("UserIndex");
             }
+            return View(bedrijf.Opdrachten);
+        }
 
+        public ActionResult UserToolbar(int id)
+        {
+            Bedrijf bedrijf = bedrijfRepository.FindById(id);
+            return PartialView(bedrijf);
+        }
    
         }
 
