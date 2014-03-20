@@ -18,18 +18,20 @@ namespace InternshipApplication.Controllers
         private IStagebegeleiderRepository stagebegeleiderRepository;
         private IUserRepository userRepository;
         private ISpecialisatieRepository specialisatieRepository;
+        private IOpdrachtRepository opdrachtRepository;
 
-       
         //public UserController(){}
 
-        public UserController(IBedrijfRepository bedrijfR, IStudentRepository studentR , 
-            IStagebegeleiderRepository stagebegeleiderR,IUserRepository usersRepository,ISpecialisatieRepository specialisatie)
+        public UserController(IBedrijfRepository bedrijfR, IStudentRepository studentR,
+            IStagebegeleiderRepository stagebegeleiderR, IUserRepository usersRepository,
+            ISpecialisatieRepository specialisatie,IOpdrachtRepository opdracht)
         {
             this.bedrijfRepository = bedrijfR;
             this.stagebegeleiderRepository = stagebegeleiderR;
             this.studentRepository = studentR;
             this.userRepository = usersRepository;
             this.specialisatieRepository = specialisatie;
+            this.opdrachtRepository = opdracht;
         }
 
         public ActionResult UserIndex()
@@ -56,7 +58,7 @@ namespace InternshipApplication.Controllers
             {
                 return RedirectToAction("UserIndex");
             }
-            return View(bedrijf.Opdrachten);
+            return View(bedrijf);
         }
 
         public ActionResult UserToolbar(int id)
@@ -64,8 +66,15 @@ namespace InternshipApplication.Controllers
             Bedrijf bedrijf = bedrijfRepository.FindById(id);
             return PartialView(bedrijf);
         }
-   
+
+        public ActionResult OpdrachtenPartial(int bedrijfId,int opdrachtId)
+        {
+            Opdracht o = opdrachtRepository.FindOpdracht(opdrachtId);
+            return PartialView(o);
         }
 
+
     }
+
+}
 

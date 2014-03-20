@@ -15,6 +15,7 @@ namespace InternshipApplication.Models.DAL.Mapper
             Property(o => o.Title).IsRequired().HasMaxLength(100);
             Property(o => o.Omschrijving).IsRequired().HasMaxLength(500);
             HasRequired(o => o.Specialisatie).WithMany().Map(m => m.MapKey("specId"));
+            Property(o => o.AdminComment).IsOptional().HasMaxLength(500);
             ToTable("opdracht");
         }
         

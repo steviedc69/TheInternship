@@ -20,6 +20,7 @@ namespace InternshipApplication.Models.Domain
         public Boolean isSemester2 { get; set; }
         //public virtual Bedrijf Bedrijf { get; set; }
         public virtual Specialisatie Specialisatie { get; set; }
+        public String AdminComment { get; set; }
 
 
         public Opdracht()

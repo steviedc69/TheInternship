@@ -7,9 +7,7 @@ namespace InternshipApplication.Models.Domain
 {
     public interface IOpdrachtRepository
     {
-        IQueryable<Opdracht> FindAllOpdrachtsFromBedrijf(int bedrijfId);
-        IQueryable<Opdracht> FindAllOpdrachtenFromSpecialisatie(int specialId);
-        IQueryable<Opdracht> FindAllOpdrachtenFromStudentId(int studentId);
+        Opdracht FindOpdracht(int id);
 
     }
 }

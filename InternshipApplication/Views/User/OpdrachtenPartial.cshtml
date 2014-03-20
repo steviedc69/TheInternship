@@ -1,0 +1,32 @@
+﻿@model InternshipApplication.Models.Domain.Opdracht
+
+<div class="col-md-12">
+    <h2 >@Model.Title</h2>
+    <p >@Model.Omschrijving
+
+        <dl>
+            <dt>Specialisatie : </dt>
+            <dd>@Model.Specialisatie.Title</dd>
+            <dt>Periode : </dt>
+            @if (@Model.isSemester1)
+            {
+                <dd>Semester 1</dd>
+            }
+            @if (@Model.isSemester2)
+            {
+                <dd>Semester 2</dd>
+            }
+        </dl>
+        <br/>
+        @Model.AdminComment
+    </p>
+    <p >
+        <lu class="navbar-nav">
+            <li>Wijzig</li>
+            <li>Verwijder</li>
+        </lu>
+    </p>
+    <p class="panel-footer"></p>
+    
+</div>
+

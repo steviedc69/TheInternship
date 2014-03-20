@@ -245,6 +245,7 @@
     <Compile Include="Models\Domain\Student.cs" />
     <Compile Include="Models\Domain\Stagebegeleider.cs" />
     <Compile Include="ViewModels\loginModel.cs" />
+    <Compile Include="ViewModels\OpdrachtViewModel.cs" />
     <Compile Include="ViewModels\RegistratieModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -374,6 +375,7 @@
     <Content Include="Views\User\UserToolbar.cshtml" />
     <Content Include="Views\User\ContactPersonen.cshtml" />
     <Content Include="Views\User\OpdrachtenView.cshtml" />
+    <Content Include="Views\User\OpdrachtenPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,22 +18,10 @@ namespace InternshipApplication.Models.DAL
             this.opdrachten = context.Opdrachten;
         }
 
-        public IQueryable<Opdracht> FindAllOpdrachtsFromBedrijf(int bedrijfId)
-        {
-           // return opdrachten.Where(o => o.Bedrijf.Id == bedrijfId);
-            throw new NotImplementedException();
-        }
 
-        public IQueryable<Opdracht> FindAllOpdrachtenFromSpecialisatie(int specialId)
+        public Opdracht FindOpdracht(int id)
         {
-            //return opdrachten.Where(o => o.Specialisatie.Id == specialId);
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Opdracht> FindAllOpdrachtenFromStudentId(int studentId)
-        {
-            //not implemented yet
-            throw new NotImplementedException();
+            return opdrachten.Find(id);
         }
     }
 }
