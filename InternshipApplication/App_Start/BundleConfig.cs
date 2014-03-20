@@ -45,8 +45,8 @@ namespace InternshipApplication
                            ));
 
             bundles.Add(new StyleBundle("~/content/css").Include(
-                "~/Content/bootstrap.css"
-              //"~/Content/site.css"
+                "~/Content/bootstrap.css",
+              "~/Content/site.css"
                             ));
         }
     }
