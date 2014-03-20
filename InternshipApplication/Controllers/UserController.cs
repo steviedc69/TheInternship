@@ -78,7 +78,7 @@ namespace InternshipApplication.Controllers
         {
             return View();
         }
-
+        // Contact wordt toegevoegd
         [HttpPost]
         public ActionResult AddContact(ContactModel contact, int id)
         {
