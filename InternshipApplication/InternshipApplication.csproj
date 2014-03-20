@@ -244,6 +244,7 @@
     <Compile Include="Models\Domain\User.cs" />
     <Compile Include="Models\Domain\Student.cs" />
     <Compile Include="Models\Domain\Stagebegeleider.cs" />
+    <Compile Include="ViewModels\ContactModel.cs" />
     <Compile Include="ViewModels\loginModel.cs" />
     <Compile Include="ViewModels\OpdrachtViewModel.cs" />
     <Compile Include="ViewModels\RegistratieModel.cs" />
@@ -376,6 +377,7 @@
     <Content Include="Views\User\ContactPersonen.cshtml" />
     <Content Include="Views\User\OpdrachtenView.cshtml" />
     <Content Include="Views\User\OpdrachtenPartial.cshtml" />
+    <Content Include="Views\User\AddContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

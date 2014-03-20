@@ -74,6 +74,24 @@ namespace InternshipApplication.Controllers
         }
 
 
+        public ActionResult AddContact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddContact(ContactModel contact, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                bedrijfRepository.FindById(id).AddContactPersoon(new ContactPersoon(contact.Naam, contact.Voornaam, contact.Functie, contact.ContactEmail, contact.ContactTelNr, contact.GsmNummer));
+                bedrijfRepository.SaveChanges();
+                return View("UserIndex");
+
+            }
+            return View(contact);
+        }
+
     }
 
 }
