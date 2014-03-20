@@ -8,7 +8,7 @@ namespace InternshipApplication.ViewModels
 {
     public class LoginModel
     {
-   
+   //test
         [Required(ErrorMessage = "{0} is verplicht")]
         [Display(Name = "Gebruikersnaam (E-mailadres) : ")]
         public String Email { get; set; }
