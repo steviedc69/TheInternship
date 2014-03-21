@@ -17,6 +17,7 @@ else
     <ul class="nav navbar-nav navbar-right">
         <li class="@(ViewBag.Active == "Registreer" ? "active" : "")">@Html.ActionLink("Registreer", "Register", "User", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li class="@(ViewBag.Active == "Log in" ? "active" : "")">@Html.ActionLink("Log in", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink"})</li>
+        <li class="@(ViewBag.Active == "Add contact" ? "active" : "")">@Html.ActionLink("Add contact", "AddContact", "User", routeValues: null, htmlAttributes: new { id = "addContactLink"})</li>
         <li class="divider-vertical"></li>
         <li>
             <a href="http://hogent.be/" class="hogent-logo" target="_blank"><img src="~/Images/HG-woordmerk.png" height="15px"/></a>

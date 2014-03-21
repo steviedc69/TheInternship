@@ -86,7 +86,7 @@ namespace InternshipApplication.Controllers
             {
                 bedrijfRepository.FindById(id).AddContactPersoon(new ContactPersoon(contact.Naam, contact.Voornaam, contact.Functie, contact.ContactEmail, contact.ContactTelNr, contact.GsmNummer));
                 bedrijfRepository.SaveChanges();
-                return View("UserIndex");
+                return View("ContactPersonen");
 
             }
             return View(contact);

@@ -1,18 +1,22 @@
 ﻿@model InternshipApplication.Models.Domain.Bedrijf
 
-<div class="navbar navbar-inverse " role="navigation" >
+<div class="navbar navbar-inverse " role="navigation">
     <ul class="nav navbar-nav">
-        
-      
+
+
         <li>@Html.ActionLink("Contact personen",
                                      "ContactPersonen",
                                         "User",
-                                             new{id= Model.Id},null)</li>
+                                             new { id = Model.Id }, null)</li>
         <li>@Html.ActionLink("Opdrachten",
                                     "OpdrachtenView",
                                         "User",
-                                              new{id = Model.Id},null)</li>
+                                             new { id = Model.Id }, null)</li>
+        <li>@Html.ActionLink("Add Contact",
+                                    "AddContact",
+                                        "User",
+                                              new { id = Model.Id }, null)</li>
         <li>@Model.Bedrijfsnaam</li>
     </ul>
-                
+
 </div>

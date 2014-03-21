@@ -1,11 +1,11 @@
 ﻿@model InternshipApplication.ViewModels.ContactModel
 
 @{
-    ViewBag.Title = "Registreer";
-    ViewBag.Active = "Registreer";
+    ViewBag.Title = "Add contact";
+    ViewBag.Active = "AddContact";
 }
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post,
+@using (Html.BeginForm("AddContact", "User", FormMethod.Post,
     new {@class = "form-horizontal", role = "form"}))
 {
     @Html.AntiForgeryToken()
