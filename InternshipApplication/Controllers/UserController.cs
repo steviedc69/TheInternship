@@ -24,7 +24,7 @@ namespace InternshipApplication.Controllers
 
         public UserController(IBedrijfRepository bedrijfR, IStudentRepository studentR,
             IStagebegeleiderRepository stagebegeleiderR, IUserRepository usersRepository,
-            ISpecialisatieRepository specialisatie,IOpdrachtRepository opdracht)
+            ISpecialisatieRepository specialisatie, IOpdrachtRepository opdracht)
         {
             this.bedrijfRepository = bedrijfR;
             this.stagebegeleiderRepository = stagebegeleiderR;
@@ -67,7 +67,7 @@ namespace InternshipApplication.Controllers
             return PartialView(bedrijf);
         }
 
-        public ActionResult OpdrachtenPartial(int bedrijfId,int opdrachtId)
+        public ActionResult OpdrachtenPartial(int bedrijfId, int opdrachtId)
         {
             Opdracht o = opdrachtRepository.FindOpdracht(opdrachtId);
             return PartialView(o);
@@ -91,6 +91,45 @@ namespace InternshipApplication.Controllers
             }
             return View(contact);
         }
+        public ActionResult AddOpdracht()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddOpdracht(OpdrachtViewModel model, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                Opdracht opdracht = new Opdracht();
+                opdracht.Title = model.Title;
+                opdracht.Omschrijving = model.Omschrijving;
+                if (model.Semesters.SelectedValue.Equals("Semester 1"))
+                {
+                    opdracht.IsSemester1 = true;
+                    opdracht.IsSemester2 = false;
+                }
+                else if (model.Semesters.SelectedValue.Equals("Semester 2"))
+                {
+                    opdracht.IsSemester2 = true;
+                    opdracht.IsSemester1 = false;
+                }
+                else
+                {
+                    opdracht.IsSemester1 = true;
+                    opdracht.IsSemester2 = true;
+                }
+                opdracht.Specialisatie = model.Specialisatie;
+                opdracht.AdminComment = model.AdminComment;
+                bedrijfRepository.FindById(id).AddOpdracht(opdracht);
+                bedrijfRepository.SaveChanges();
+                RedirectToAction("UserIndex");
+            }
+            return View(model);
+
+        }
+
+
 
     }
 

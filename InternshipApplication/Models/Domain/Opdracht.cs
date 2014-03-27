@@ -16,8 +16,8 @@ namespace InternshipApplication.Models.Domain
         public int Id { get; set; }
         public String Title { get; set; }
         public String Omschrijving { get; set; }
-        public Boolean isSemester1 { get; set; }
-        public Boolean isSemester2 { get; set; }
+        public Boolean IsSemester1 { get; set; }
+        public Boolean IsSemester2 { get; set; }
         //public virtual Bedrijf Bedrijf { get; set; }
         public virtual Specialisatie Specialisatie { get; set; }
         public String AdminComment { get; set; }

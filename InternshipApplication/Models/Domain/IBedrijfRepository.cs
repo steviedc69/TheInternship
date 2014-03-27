@@ -13,6 +13,7 @@ namespace InternshipApplication.Models.Domain
         Bedrijf FindByName(string bedrijfsnaam);
         IQueryable<Bedrijf> FindByPlace(string gemeente);
         void Add(Bedrijf bedrijf);
+
         void SaveChanges();
 
     }

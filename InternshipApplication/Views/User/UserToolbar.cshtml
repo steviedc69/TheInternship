@@ -13,7 +13,11 @@
                                         "User",
                                              new { id = Model.Id }, null)</li>
         <li>@Html.ActionLink("Add Contact",
-                                    "AddContact",
+                "AddContact",
+                "User",
+                new { id = Model.Id }, null)</li>
+        <li>@Html.ActionLink("voeg opdracht toe",
+                                    "AddOpdracht",
                                         "User",
                                               new { id = Model.Id }, null)</li>
         <li>@Model.Bedrijfsnaam</li>

@@ -90,8 +90,9 @@ namespace InternshipApplication.Models.DAL
                 {
                     Title = "Voorstel1",
                     Specialisatie = sp1,
-                    isSemester1 = true,
-                    isSemester2 = false,
+                    
+                    IsSemester1= true,
+                    IsSemester2 = false,
                     Omschrijving = "Het eerste voorstel van dit bedrijf, programmeren van een back-end java applicatie"
 
                 };

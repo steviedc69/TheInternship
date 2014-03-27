@@ -248,6 +248,7 @@
     <Compile Include="ViewModels\loginModel.cs" />
     <Compile Include="ViewModels\OpdrachtViewModel.cs" />
     <Compile Include="ViewModels\RegistratieModel.cs" />
+    <Compile Include="ViewModels\StageModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -319,6 +320,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\TheIntern.pubxml" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -382,6 +384,7 @@
     <Content Include="Views\User\OpdrachtenView.cshtml" />
     <Content Include="Views\User\OpdrachtenPartial.cshtml" />
     <Content Include="Views\User\AddContact.cshtml" />
+    <Content Include="Views\User\AddOpdracht.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
