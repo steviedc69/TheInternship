@@ -23,5 +23,10 @@ namespace InternshipApplication.Models.Domain
             this.Title = title;
            // this.Opdrachten = opdrachten;
         }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }

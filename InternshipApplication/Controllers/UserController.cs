@@ -93,23 +93,28 @@ namespace InternshipApplication.Controllers
         }
         public ActionResult AddOpdracht()
         {
-            return View();
+            List<Specialisatie> specialisaties = new List<Specialisatie>();
+            specialisaties.Add(new Specialisatie(1, "Programmeren"));
+            specialisaties.Add(new Specialisatie(1, "Netwerken"));
+            specialisaties.Add(new Specialisatie(1, "Mainframe"));
+            specialisaties.Add(new Specialisatie(1, "Mobile apps"));
+            return View(new CreateOpdrachtViewModel(specialisaties, new OpdrachtViewModel()));
         }
 
         [HttpPost]
-        public ActionResult AddOpdracht(OpdrachtViewModel model, int id)
+        public ActionResult AddOpdracht([Bind(Prefix = "OpdrachtViewModel")]OpdrachtViewModel model, int id)
         {
             if (ModelState.IsValid)
             {
                 Opdracht opdracht = new Opdracht();
                 opdracht.Title = model.Title;
                 opdracht.Omschrijving = model.Omschrijving;
-                if (model.Semesters.SelectedValue.Equals("Semester 1"))
+                if (model.Semesters.Equals("Semester 1"))
                 {
                     opdracht.IsSemester1 = true;
                     opdracht.IsSemester2 = false;
                 }
-                else if (model.Semesters.SelectedValue.Equals("Semester 2"))
+                else if (model.Semesters.Equals("Semester 2"))
                 {
                     opdracht.IsSemester2 = true;
                     opdracht.IsSemester1 = false;
@@ -122,10 +127,16 @@ namespace InternshipApplication.Controllers
                 opdracht.Specialisatie = model.Specialisatie;
                 opdracht.AdminComment = model.AdminComment;
                 bedrijfRepository.FindById(id).AddOpdracht(opdracht);
+
                 bedrijfRepository.SaveChanges();
                 RedirectToAction("UserIndex");
             }
-            return View(model);
+            List<Specialisatie> specialisaties = new List<Specialisatie>();
+            specialisaties.Add(new Specialisatie(1, "Programmeren"));
+            specialisaties.Add(new Specialisatie(1, "Netwerken"));
+            specialisaties.Add(new Specialisatie(1, "Mainframe"));
+            specialisaties.Add(new Specialisatie(1, "Mobile apps"));
+            return View(new CreateOpdrachtViewModel(specialisaties, model));
 
         }
 
