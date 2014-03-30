@@ -94,10 +94,7 @@ namespace InternshipApplication.Controllers
         public ActionResult AddOpdracht()
         {
             List<Specialisatie> specialisaties = new List<Specialisatie>();
-            specialisaties.Add(new Specialisatie(1, "Programmeren"));
-            specialisaties.Add(new Specialisatie(1, "Netwerken"));
-            specialisaties.Add(new Specialisatie(1, "Mainframe"));
-            specialisaties.Add(new Specialisatie(1, "Mobile apps"));
+            specialisaties = specialisatieRepository.FindAllSpecialisaties();
             return View(new CreateOpdrachtViewModel(specialisaties, new OpdrachtViewModel()));
         }
 
