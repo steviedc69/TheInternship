@@ -52,6 +52,13 @@ namespace InternshipApplication.Controllers
             return View(bedrijf.ContactPersonen);
         }
 
+        public ActionResult UpdateContact(int id)
+        {
+            Bedrijf b = bedrijfRepository.FindById(1);
+            ContactPersoon contact = b.ContactPersonen.FirstOrDefault(m =>m.Id == id);
+            return View(contact);
+        }
+
         public ActionResult OpdrachtenView(int id)
         {
             Bedrijf bedrijf = bedrijfRepository.FindById(id);
