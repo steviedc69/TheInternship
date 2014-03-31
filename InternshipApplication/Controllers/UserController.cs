@@ -133,6 +133,27 @@ namespace InternshipApplication.Controllers
 
         }
 
+        public ActionResult AddContactPersoon()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddContactPersoon(ContactModel model, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                ContactPersoon contact = new ContactPersoon();
+                contact.Naam = model.Naam;
+                contact.Voornaam = model.Voornaam;
+                contact.ContactEmail = model.ContactEmail;
+                contact.ContactTelNr = model.ContactTelNr;
+                contact.Functie = model.Functie;
+                contact.GsmNummer = model.GsmNummer;
+            }
+            return View(model);
+        }
+
 
 
     }

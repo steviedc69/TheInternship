@@ -385,6 +385,7 @@
     <Content Include="Views\User\OpdrachtenPartial.cshtml" />
     <Content Include="Views\User\AddContact.cshtml" />
     <Content Include="Views\User\AddOpdracht.cshtml" />
+    <Content Include="Views\User\AddContactPersoon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
