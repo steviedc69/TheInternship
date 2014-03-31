@@ -122,11 +122,10 @@ namespace InternshipApplication.Controllers
                     opdracht.IsSemester2 = true;
                 }
                 opdracht.Specialisatie = specialisatieRepository.FindSpecialisatieNaam(model.Specialisatie);
-                opdracht.AdminComment = model.AdminComment;
                 bedrijfRepository.FindById(id).AddOpdracht(opdracht);
 
                 bedrijfRepository.SaveChanges();
-                RedirectToAction("UserIndex");
+                return RedirectToAction("UserIndex");
             }
             IEnumerable<Specialisatie> specialisaties;
             specialisaties = specialisatieRepository.FindAllSpecialisaties();

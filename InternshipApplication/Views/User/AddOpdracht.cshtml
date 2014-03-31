@@ -40,13 +40,6 @@
                 @Html.ValidationMessageFor(model => model.OpdrachtViewModel.Omschrijving)
             </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.OpdrachtViewModel.AdminComment)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.OpdrachtViewModel.AdminComment)
-                @Html.ValidationMessageFor(model => model.OpdrachtViewModel.AdminComment)
-            </div>
             
             <div class="form-group">
                 @Html.LabelFor(model => model.OpdrachtViewModel.Specialisatie, new { @class = "control-label col-md-2" })
