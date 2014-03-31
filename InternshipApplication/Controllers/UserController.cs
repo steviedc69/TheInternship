@@ -93,7 +93,7 @@ namespace InternshipApplication.Controllers
         }
         public ActionResult AddOpdracht()
         {
-            List<Specialisatie> specialisaties = new List<Specialisatie>();
+            IEnumerable<Specialisatie> specialisaties;
             specialisaties = specialisatieRepository.FindAllSpecialisaties();
             return View(new CreateOpdrachtViewModel(specialisaties, new OpdrachtViewModel()));
         }
@@ -121,18 +121,15 @@ namespace InternshipApplication.Controllers
                     opdracht.IsSemester1 = true;
                     opdracht.IsSemester2 = true;
                 }
-                opdracht.Specialisatie = model.Specialisatie;
+                opdracht.Specialisatie = specialisatieRepository.FindSpecialisatieNaam(model.Specialisatie);
                 opdracht.AdminComment = model.AdminComment;
                 bedrijfRepository.FindById(id).AddOpdracht(opdracht);
 
                 bedrijfRepository.SaveChanges();
                 RedirectToAction("UserIndex");
             }
-            List<Specialisatie> specialisaties = new List<Specialisatie>();
-            specialisaties.Add(new Specialisatie(1, "Programmeren"));
-            specialisaties.Add(new Specialisatie(1, "Netwerken"));
-            specialisaties.Add(new Specialisatie(1, "Mainframe"));
-            specialisaties.Add(new Specialisatie(1, "Mobile apps"));
+            IEnumerable<Specialisatie> specialisaties;
+            specialisaties = specialisatieRepository.FindAllSpecialisaties();
             return View(new CreateOpdrachtViewModel(specialisaties, model));
 
         }

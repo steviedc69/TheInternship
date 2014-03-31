@@ -45,7 +45,7 @@ namespace InternshipApplication.ViewModels
         public String Semesters { get; set; }
         [Display(Name= "Specialisatie : ")]
         [Required(ErrorMessage = "U moet een specialisatie kiezen.")]
-        public Specialisatie Specialisatie { get; set; }
+        public String Specialisatie { get; set; }
         [Display(Name = "Commentaar van de stagebeheerder : ")]
         public String AdminComment { get; set; }
 

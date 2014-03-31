@@ -29,6 +29,11 @@ namespace InternshipApplication.Models.DAL
             return specialisaties.Find(id);
         }
 
+        public Specialisatie FindSpecialisatieNaam(String naam)
+        {
+            return specialisaties.FirstOrDefault(m => m.Title == naam);
+        }
+
         public void SaveChanges()
         {
             context.SaveChanges();
