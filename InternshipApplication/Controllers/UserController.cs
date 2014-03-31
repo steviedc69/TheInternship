@@ -48,6 +48,7 @@ namespace InternshipApplication.Controllers
                 //voorlopig
                 return RedirectToAction("UserIndex");
             }
+            
             return View(bedrijf.ContactPersonen);
         }
 
@@ -150,6 +151,7 @@ namespace InternshipApplication.Controllers
                 contact.ContactTelNr = model.ContactTelNr;
                 contact.Functie = model.Functie;
                 contact.GsmNummer = model.GsmNummer;
+                return RedirectToAction("UserIndex");
             }
             return View(model);
         }
