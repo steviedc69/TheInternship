@@ -48,7 +48,15 @@ namespace InternshipApplication.Controllers
                 //voorlopig
                 return RedirectToAction("UserIndex");
             }
+            
             return View(bedrijf.ContactPersonen);
+        }
+
+        public ActionResult UpdateContact(int id)
+        {
+            Bedrijf b = bedrijfRepository.FindById(1);
+            ContactPersoon contact = b.ContactPersonen.FirstOrDefault(m =>m.Id == id);
+            return View(contact);
         }
 
         public ActionResult OpdrachtenView(int id)
@@ -93,23 +101,25 @@ namespace InternshipApplication.Controllers
         }
         public ActionResult AddOpdracht()
         {
-            return View();
+            IEnumerable<Specialisatie> specialisaties;
+            specialisaties = specialisatieRepository.FindAllSpecialisaties();
+            return View(new CreateOpdrachtViewModel(specialisaties, new OpdrachtViewModel()));
         }
 
         [HttpPost]
-        public ActionResult AddOpdracht(OpdrachtViewModel model, int id)
+        public ActionResult AddOpdracht([Bind(Prefix = "OpdrachtViewModel")]OpdrachtViewModel model, int id)
         {
             if (ModelState.IsValid)
             {
                 Opdracht opdracht = new Opdracht();
                 opdracht.Title = model.Title;
                 opdracht.Omschrijving = model.Omschrijving;
-                if (model.Semesters.SelectedValue.Equals("Semester 1"))
+                if (model.Semesters.Equals("Semester 1"))
                 {
                     opdracht.IsSemester1 = true;
                     opdracht.IsSemester2 = false;
                 }
-                else if (model.Semesters.SelectedValue.Equals("Semester 2"))
+                else if (model.Semesters.Equals("Semester 2"))
                 {
                     opdracht.IsSemester2 = true;
                     opdracht.IsSemester1 = false;
@@ -119,14 +129,38 @@ namespace InternshipApplication.Controllers
                     opdracht.IsSemester1 = true;
                     opdracht.IsSemester2 = true;
                 }
-                opdracht.Specialisatie = model.Specialisatie;
-                opdracht.AdminComment = model.AdminComment;
+                opdracht.Specialisatie = specialisatieRepository.FindSpecialisatieNaam(model.Specialisatie);
                 bedrijfRepository.FindById(id).AddOpdracht(opdracht);
+
                 bedrijfRepository.SaveChanges();
-                RedirectToAction("UserIndex");
+                return RedirectToAction("UserIndex");
+            }
+            IEnumerable<Specialisatie> specialisaties;
+            specialisaties = specialisatieRepository.FindAllSpecialisaties();
+            return View(new CreateOpdrachtViewModel(specialisaties, model));
+
+        }
+
+        public ActionResult AddContactPersoon()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddContactPersoon(ContactModel model, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                ContactPersoon contact = new ContactPersoon();
+                contact.Naam = model.Naam;
+                contact.Voornaam = model.Voornaam;
+                contact.ContactEmail = model.ContactEmail;
+                contact.ContactTelNr = model.ContactTelNr;
+                contact.Functie = model.Functie;
+                contact.GsmNummer = model.GsmNummer;
+                return RedirectToAction("UserIndex");
             }
             return View(model);
-
         }
 
 

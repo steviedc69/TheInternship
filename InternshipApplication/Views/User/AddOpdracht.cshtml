@@ -1,4 +1,4 @@
-﻿@model InternshipApplication.ViewModels.OpdrachtViewModel
+﻿@model InternshipApplication.ViewModels.CreateOpdrachtViewModel
 
 @{
     Layout = null;
@@ -25,43 +25,38 @@
             <legend>OpdrachtViewModel</legend>
 
             <div class="editor-label">
-                @Html.LabelFor(model => model.Title)
+                @Html.LabelFor(model => model.OpdrachtViewModel.Title)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Title)
-                @Html.ValidationMessageFor(model => model.Title)
+                @Html.EditorFor(model => model.OpdrachtViewModel.Title)
+                @Html.ValidationMessageFor(model => model.OpdrachtViewModel.Title)
             </div>
 
             <div class="editor-label">
-                @Html.LabelFor(model => model.Omschrijving)
+                @Html.LabelFor(model => model.OpdrachtViewModel.Omschrijving)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Omschrijving)
-                @Html.ValidationMessageFor(model => model.Omschrijving)
+                @Html.EditorFor(model => model.OpdrachtViewModel.Omschrijving)
+                @Html.ValidationMessageFor(model => model.OpdrachtViewModel.Omschrijving)
             </div>
+
+            
             <div class="form-group">
-                @Html.LabelFor(model => model.Semesters, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.OpdrachtViewModel.Specialisatie, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Semesters,
-                        Model.Semesters, "--Selecteer semester--", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Semesters)
+                    @Html.DropDownListFor(model => model.OpdrachtViewModel.Specialisatie,
+                Model.SpecialisatieList, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.OpdrachtViewModel.Specialisatie)
                 </div>
             </div>
-            
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Specialisatie)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.AdminComment)
-                @Html.ValidationMessageFor(model => model.Specialisatie)
-            </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.AdminComment)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.AdminComment)
-                @Html.ValidationMessageFor(model => model.AdminComment)
+            <div class="form-group">
+                @Html.LabelFor(model => model.OpdrachtViewModel.Semesters, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.OpdrachtViewModel.Semesters,
+                Model.SemesterLijst, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.OpdrachtViewModel.Semesters)
+                </div>
             </div>
 
             <p>
