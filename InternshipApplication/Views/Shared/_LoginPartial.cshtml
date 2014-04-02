@@ -6,17 +6,18 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hello " + User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <a href="@Url.Action("Manage", "Account", routeValues: null)" title="Manage"><span class="glyphicon glyphicon-user blueIcon"></span>&nbsp;@User.Identity.Name</a>
+            @*@Html.ActionLink("Hello " + User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })*@
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Afmelden</a></li>
     </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li class="@(ViewBag.Active == "Registreer" ? "active" : "")">@Html.ActionLink("Registreer", "Register", "User", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li class="@(ViewBag.Active == "Log in" ? "active" : "")">@Html.ActionLink("Log in", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink"})</li>
+        <li class="@(ViewBag.Active == "Registreer" ? "active" : "")"><a href="@Url.Action("Register", "Account")"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Registreren</a></li>
+        <li class="@(ViewBag.Active == "Log in" ? "active" : "")"><a href="@Url.Action("Login", "Account")"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Aanmelden</a></li>
         <li class="divider-vertical"></li>
         <li>
             <a href="http://hogent.be/" class="hogent-logo" target="_blank"><img src="~/Images/HG-woordmerk.png" height="15px"/></a>

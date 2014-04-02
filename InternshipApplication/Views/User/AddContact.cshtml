@@ -1,16 +1,18 @@
 ﻿@model InternshipApplication.ViewModels.ContactModel
 
 @{
-    ViewBag.Title = "Add contact";
-    ViewBag.Active = "AddContact";
+    ViewBag.Title = "Contactpersoon toevoegen";
+    ViewBag.Active = "User";
 }
+
+@{ Html.RenderAction("UserToolbar");}
 
 @using (Html.BeginForm("AddContact", "User", FormMethod.Post,
     new {@class = "form-horizontal", role = "form"}))
 {
     @Html.AntiForgeryToken()
-    <h4>Registreer</h4>
-    <hr />
+    <h2>@ViewBag.Title</h2>
+    
     @Html.ValidationSummary()
     <div class="form-group">
         @Html.LabelFor(m => m.Naam, new {@class = "col-md-2 control-label"})

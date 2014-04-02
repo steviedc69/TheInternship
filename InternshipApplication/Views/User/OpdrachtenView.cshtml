@@ -12,6 +12,6 @@
 @foreach (var item in Model.Opdrachten)
 {
     <div style="margin-bottom: 20px">
-        @{ Html.RenderAction("OpdrachtenPartial", "User", new {Bedrijfid = Model.Id,Opdrachtid = item.Id});}
+        @{ Html.RenderAction("OpdrachtenPartial", "User", new {Bedrijfid = Model.Id, Opdrachtid = item.Id}); }
     </div>
 }

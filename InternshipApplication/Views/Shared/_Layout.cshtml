@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
     <meta charset="utf-8" />
-    <title>The Internship</title>
+    <title>The Internship | @ViewBag.Title</title>
     <link href="~/Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Applicatie voor het beheren van stages. In samenwerking met de HoGent.">
@@ -23,8 +23,8 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="@(ViewBag.Active == "Home" ? "active" : "")">@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li class="@(ViewBag.Active == "Over" ? "active" : "")">@Html.ActionLink("Over", "About", "Home")</li>
+                    <li class="@(ViewBag.Active == "Home" ? "active" : "")"><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="@(ViewBag.Active == "Info" ? "active" : "")">@Html.ActionLink("Info", "Info", "Home")</li>
                     <li class="@(ViewBag.Active == "Contact" ? "active" : "")">@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li class="@(ViewBag.Active == "User" ? "active" : "")">@Html.ActionLink("Bedrijf", "UserIndex", "User")</li>
                 </ul>
@@ -35,12 +35,19 @@
     <div class="container">
         @if (TempData["Message"] != null)
         {
-            <div class="alert alert-danger">@TempData["Message"]</div>
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                @TempData["Message"]
+            </div>
         }
         @if (TempData["Info"] != null)
         {
-            <div class="alert alert-success">@TempData["Info"]</div>
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                @TempData["Info"]
+            </div>
         }
+
         @RenderBody()
         
 

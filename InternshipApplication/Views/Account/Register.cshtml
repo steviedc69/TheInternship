@@ -9,82 +9,111 @@
     new {@class = "form-horizontal", role = "form"}))
 {
     @Html.AntiForgeryToken()
-    <h4>Registreer</h4>
+    <h4>Registreren</h4>
     <hr />
     @Html.ValidationSummary()
-    <div class="form-group">
-        @Html.LabelFor(m => m.Bedrijfsnaam, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Bedrijfsnaam, new {@class = "form-control", style = "width: 50%" })
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">Bedrijfsnaam</span>
+                @Html.TextBoxFor(m => m.Bedrijfsnaam, new {@class = "form-control", required=true, autofocus=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Bedrijfsnaam)
+            </p>
+            
+            <div class="input-group">
+                <span class="input-group-addon">Email</span>
+                @Html.TextBoxFor(m => m.Email, new {@class = "form-control", type="email", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Email)
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">Wachtwoord</span>
+                @Html.TextBoxFor(m => m.Password, new {@class = "form-control", type="password", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Password)
+            </p>
+            
+            <div class="input-group">
+                <span class="input-group-addon">Bevestig wachtwoord</span>
+                @Html.TextBoxFor(m => m.ConfirmPaswoord, new {@class = "form-control", type="password", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.ConfirmPaswoord)
+            </p>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Url, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Url, new {@class = "form-control", style = "width: 50%" })
+    <hr/>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Straat</span>
+                @Html.TextBoxFor(m => m.Straat, new {@class = "form-control", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Straat)
+            </p>
+            
+            <div class="input-group">
+                <span class="input-group-addon">Nummer</span>
+                @Html.TextBoxFor(m => m.Straatnummer, new {@class = "form-control", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Straatnummer)
+            </p>
+            
+            <div class="input-group">
+                <span class="input-group-addon">Plaats</span>
+                @Html.TextBoxFor(m => m.Woonplaats, new {@class = "form-control", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Woonplaats)
+            </p>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Telefoon</span>
+                @Html.TextBoxFor(m => m.Telefoon, new {@class = "form-control", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Telefoon)
+            </p>
+            
+            <div class="input-group">
+                <span class="input-group-addon">Url</span>
+                @Html.TextBoxFor(m => m.Url, new {@class = "form-control", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Url)
+            </p>
+        </div>
+        <div class="col-lg-4">
+            <div class="input-group">
+                <span class="input-group-addon">Bereikbaarheid</span>
+                @Html.TextBoxFor(m => m.Bereikbaarheid, new {@class = "form-control", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Bereikbaarheid)
+            </p>
+            
+            <div class="input-group">
+                <span class="input-group-addon">Activiteit</span>
+                @Html.TextBoxFor(m => m.Activiteit, new {@class = "form-control", required=true, placeholder="..." })
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Activiteit)
+            </p>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Straat, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Straat, new {@class = "form-control", style = "width: 50%" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Straatnummer, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Straatnummer, new {@class = "form-control", style = "width: 50%" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Woonplaats, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Woonplaats, new {@class = "form-control", style = "width: 50%" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Telefoon, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Telefoon, new {@class = "form-control", style = "width: 50%" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Bereikbaarheid, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Bereikbaarheid, new {@class = "form-control", style = "width: 50%" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Activiteit, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Activiteit, new {@class = "form-control", style = "width: 50%" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new {@class = "form-control", style = "width: 50%" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new {@class = "form-control", type = "password", style = "width: 50%" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPaswoord, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPaswoord, new {@class = "form-control", type = "password", style = "width: 50%" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Registreer" style="width: 50%" />
+    <div class="row">
+        <div class="col-lg-9"></div>
+        <div class="col-lg-3">
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Registreer" />
         </div>
     </div>
 }
