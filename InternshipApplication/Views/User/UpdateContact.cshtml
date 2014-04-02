@@ -1,4 +1,4 @@
-﻿@model InternshipApplication.Models.Domain.ContactPersoon
+﻿@model InternshipApplication.ViewModels.ContactModel
 
 @{
     Layout = null;
@@ -23,7 +23,6 @@
         <fieldset>
             <legend>ContactPersoon</legend>
     
-            @Html.HiddenFor(model => model.Id)
     
             <div class="editor-label">
                 @Html.LabelFor(model => model.Naam)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using InternshipApplication.Models;
 using InternshipApplication.Models.Domain;
 using InternshipApplication.ViewModels;
@@ -54,10 +55,36 @@ namespace InternshipApplication.Controllers
 
         public ActionResult UpdateContact(int id)
         {
-            Bedrijf b = bedrijfRepository.FindById(1);
-            ContactPersoon contact = b.ContactPersonen.FirstOrDefault(m =>m.Id == id);
-            return View(contact);
+            contactId = id;
+            return View(new ContactModel());
         }
+
+        private int contactId = 0;
+
+        [HttpPost]
+        public ActionResult UpdateContact(ContactModel model, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                ContactPersoon contactUpdate = new ContactPersoon();
+                contactUpdate.Naam = model.Naam;
+                contactUpdate.Voornaam = model.Voornaam;
+                contactUpdate.ContactEmail = model.ContactEmail;
+                contactUpdate.ContactTelNr = model.ContactTelNr;
+                contactUpdate.Functie = model.Functie;
+                contactUpdate.GsmNummer = model.GsmNummer;
+
+                Bedrijf b = bedrijfRepository.FindById(id);
+                ContactPersoon contact = b.ContactPersonen.FirstOrDefault(m => m.Id == contactId);
+                contactUpdate.Id = contactId;
+                b.RemoveContactPersoon(contact);
+                b.AddContactPersoon(contactUpdate);
+                bedrijfRepository.SaveChanges();
+                return RedirectToAction("UserIndex");
+            }
+            return View(model);
+        }
+
 
         public ActionResult OpdrachtenView(int id)
         {
@@ -84,7 +111,7 @@ namespace InternshipApplication.Controllers
 
         public ActionResult AddContact()
         {
-            return View();
+            return View(new ContactModel());
         }
         // Contact wordt toegevoegd
         [HttpPost]

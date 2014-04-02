@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Policy;
+using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using Microsoft.SqlServer.Server;
 
 namespace InternshipApplication.Models.Domain
@@ -41,6 +43,12 @@ namespace InternshipApplication.Models.Domain
             this.Bereikbaarheid = bereikbaarheid;
             this.Activiteit = activiteit;
             ContactPersonen = cPersonen;
+        }
+
+        public void updateContact(ContactPersoon old, ContactPersoon newContact)
+        {
+            ContactPersonen.FirstOrDefault(m => m.Id == old.Id) = newContact;
+
         }
 
         public void AddContactPersoon(ContactPersoon persoon)
