@@ -44,6 +44,7 @@ namespace InternshipApplication.Controllers
         public ActionResult ContactPersonen(int id)
         {
             Bedrijf bedrijf = bedrijfRepository.FindById(id);
+            ViewBag.bedrijfsId = id;
             if (bedrijf.ContactPersonen == null)
             {
                 //voorlopig
@@ -53,36 +54,34 @@ namespace InternshipApplication.Controllers
             return View(bedrijf.ContactPersonen);
         }
 
-        public ActionResult UpdateContact(int id)
+        public ActionResult UpdateContact(int id, int idC)
         {
-            contactId = id;
-            return View(new ContactModel());
+            //opvragen van contact
+            ContactPersoon contact = bedrijfRepository.FindById(id).ContactPersonen.FirstOrDefault(m => m.Id == idC);
+
+
+            
+            //view teruggeven met een viewmodel van contactpersonen (ContactCreateModel) dat gevuld is met het gekozen contact
+            return View("UpdateContact", contact.ConvertToContactCreateModel(id));
         }
 
-        private int contactId = 0;
+        
 
         [HttpPost]
-        public ActionResult UpdateContact(ContactModel model, int id)
+        public ActionResult UpdateContact(ContactCreateModel model, int id)
         {
             if (ModelState.IsValid)
             {
-                ContactPersoon contactUpdate = new ContactPersoon();
-                contactUpdate.Naam = model.Naam;
-                contactUpdate.Voornaam = model.Voornaam;
-                contactUpdate.ContactEmail = model.ContactEmail;
-                contactUpdate.ContactTelNr = model.ContactTelNr;
-                contactUpdate.Functie = model.Functie;
-                contactUpdate.GsmNummer = model.GsmNummer;
-
+                //ophalen van bedrijf
                 Bedrijf b = bedrijfRepository.FindById(id);
-                ContactPersoon contact = b.ContactPersonen.FirstOrDefault(m => m.Id == contactId);
-                contactUpdate.Id = contactId;
-                b.RemoveContactPersoon(contact);
-                b.AddContactPersoon(contactUpdate);
+                //ophalen van aan te passen contact in collectie Contactpersonen in bedrijf
+                ContactPersoon contact = b.ContactPersonen.FirstOrDefault(m => m.Id == model.id);
+                //via extension method updaten van contact
+                contact.UpdateContact(model);
                 bedrijfRepository.SaveChanges();
                 return RedirectToAction("UserIndex");
             }
-            return View(model);
+            return View("UpdateContact", model);
         }
 
 
@@ -111,21 +110,47 @@ namespace InternshipApplication.Controllers
 
         public ActionResult AddContact()
         {
-            return View(new ContactModel());
+            return View(new ContactPersoon().ConvertToContactCreateModel(0));
         }
         // Contact wordt toegevoegd
         [HttpPost]
-        public ActionResult AddContact(ContactModel contact, int id)
+        public ActionResult AddContact(ContactCreateModel contact, int id)
         {
             if (ModelState.IsValid)
             {
                 bedrijfRepository.FindById(id).AddContactPersoon(new ContactPersoon(contact.Naam, contact.Voornaam, contact.Functie, contact.ContactEmail, contact.ContactTelNr, contact.GsmNummer));
                 bedrijfRepository.SaveChanges();
-                return View("ContactPersonen");
+                return View("UserIndex", bedrijfRepository.FindById(id));
 
             }
             return View(contact);
         }
+
+        public ActionResult Delete(int id,int idC)
+        {
+            ContactPersoon contact = bedrijfRepository.FindById(id).ContactPersonen.First(m=>m.Id == idC);
+            return View(new ContactDeleteViewModel(contact.Naam, contact.Voornaam));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int idC, int id)
+        {
+            
+            try
+            {
+                bedrijfRepository.FindById(id).RemoveContactPersoon(bedrijfRepository.FindById(id).ContactPersonen.FirstOrDefault(m=>m.Id == idC));
+                
+                bedrijfRepository.SaveChanges();
+                return RedirectToAction("UserIndex", bedrijfRepository.FindById(id));
+            }
+            catch (Exception)
+            {
+                ContactPersoon contact = bedrijfRepository.FindById(id).ContactPersonen.FirstOrDefault(m => m.Id == idC);
+                TempData["Message"] = "Verwijderen brouwer is mislukt";
+                return View(new ContactDeleteViewModel(contact.Naam, contact.Voornaam));
+            }
+        }
+
         public ActionResult AddOpdracht()
         {
             IEnumerable<Specialisatie> specialisaties;
@@ -168,13 +193,13 @@ namespace InternshipApplication.Controllers
 
         }
 
-        public ActionResult AddContactPersoon()
+        /*public ActionResult AddContactPersoon()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddContactPersoon(ContactModel model, int id)
+        public ActionResult AddContactPersoon(ContactCreateModel model, int id)
         {
             if (ModelState.IsValid)
             {
@@ -188,7 +213,7 @@ namespace InternshipApplication.Controllers
                 return RedirectToAction("UserIndex");
             }
             return View(model);
-        }
+        }*/
 
 
 

@@ -45,12 +45,6 @@ namespace InternshipApplication.Models.Domain
             ContactPersonen = cPersonen;
         }
 
-        public void updateContact(ContactPersoon old, ContactPersoon newContact)
-        {
-            ContactPersonen.FirstOrDefault(m => m.Id == old.Id) = newContact;
-
-        }
-
         public void AddContactPersoon(ContactPersoon persoon)
         {
             this.ContactPersonen.Add(persoon);
