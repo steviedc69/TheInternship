@@ -35,11 +35,15 @@ namespace InternshipApplication.ViewModels
     }
     public class ContactDeleteViewModel
     {
-        public string Naam { get; set; }
+        public int Id { get; set; }
+        public String Naam { get; set; }
         public String Voornaam { get; set; }
 
-        public ContactDeleteViewModel(String naam, String voornaam)
+        public ContactDeleteViewModel(){}
+
+        public ContactDeleteViewModel(String naam, String voornaam, int id)
         {
+            Id = id;
             Naam = naam;
             Voornaam = voornaam;
         }

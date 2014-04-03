@@ -126,28 +126,30 @@ namespace InternshipApplication.Controllers
             return View(contact);
         }
 
-        public ActionResult Delete(int id,int idC)
+        public ActionResult DeleteContact(int id,int idC)
         {
             ContactPersoon contact = bedrijfRepository.FindById(id).ContactPersonen.First(m=>m.Id == idC);
-            return View(new ContactDeleteViewModel(contact.Naam, contact.Voornaam));
+            return View(new ContactDeleteViewModel(contact.Naam, contact.Voornaam, contact.Id));
         }
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int idC, int id)
+        [HttpPost]
+        public ActionResult DeleteContact(ContactDeleteViewModel model, int id)
         {
             
             try
             {
-                bedrijfRepository.FindById(id).RemoveContactPersoon(bedrijfRepository.FindById(id).ContactPersonen.FirstOrDefault(m=>m.Id == idC));
-                
+                int test;
+                test = 0 + 1;
+                ContactPersoon contact = bedrijfRepository.FindById(id).ContactPersonen.FirstOrDefault(m=>m.Id == model.Id);
+                //bedrijfRepository.FindById(id).RemoveContactPersoon(contact);
+                bedrijfRepository.RemoveContact(contact);
                 bedrijfRepository.SaveChanges();
                 return RedirectToAction("UserIndex", bedrijfRepository.FindById(id));
             }
             catch (Exception)
             {
-                ContactPersoon contact = bedrijfRepository.FindById(id).ContactPersonen.FirstOrDefault(m => m.Id == idC);
                 TempData["Message"] = "Verwijderen brouwer is mislukt";
-                return View(new ContactDeleteViewModel(contact.Naam, contact.Voornaam));
+                return View(model);
             }
         }
 

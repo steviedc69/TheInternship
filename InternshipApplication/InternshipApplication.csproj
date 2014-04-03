@@ -209,6 +209,7 @@
     <Compile Include="Infrastructure\StageModelBinder.cs" />
     <Compile Include="Infrastructure\StudentModelBinder.cs" />
     <Compile Include="Models\DAL\BedrijfRepository.cs" />
+    <Compile Include="Models\DAL\ContactPersoonRepository.cs" />
     <Compile Include="Models\DAL\InternshipContext.cs" />
     <Compile Include="Models\DAL\InternshipInitializer.cs" />
     <Compile Include="Models\DAL\Mapper\BedrijfMapper.cs" />
@@ -232,6 +233,7 @@
     <Compile Include="Models\Domain\Bewerkingen.cs" />
     <Compile Include="Models\Domain\ContactPersoon.cs" />
     <Compile Include="Models\Domain\IBedrijfRepository.cs" />
+    <Compile Include="Models\Domain\IContactPersoon.cs" />
     <Compile Include="Models\Domain\IOpdrachtRepository.cs" />
     <Compile Include="Models\Domain\ISpecialisatieRepository.cs" />
     <Compile Include="Models\Domain\IStagebegeleiderRepository.cs" />
@@ -388,7 +390,7 @@
     <Content Include="Views\User\AddContactPersoon.cshtml" />
     <Content Include="Views\User\ContactPersonen.cshtml" />
     <Content Include="Views\User\UpdateContact.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\DeleteContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

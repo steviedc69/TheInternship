@@ -40,6 +40,10 @@ namespace InternshipApplication.Models.DAL
             return bedrijven.Find(id);
         }
 
+        public void RemoveContact(ContactPersoon contact)
+        {
+            contactpersonen.Remove(contact);
+        }
 
         public Bedrijf FindByName(string bedrijfsnaam)
         {
